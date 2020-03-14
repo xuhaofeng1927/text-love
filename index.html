@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<title>Gave My Love/title> 
+<head> 
+</head> 
+<h2 style="margin-top:65px;">扫扫看看有什么吧</h2>
+<body style="text-align:center;"> 
+<canvas id="canvas" width="500" height="500" style="border: 3px solid #ddd"></canvas>
+<script language="javascript">
+	var canvas=document.getElementById("canvas");
+	var ctx=canvas.getContext("2d");
+	var row=[];
+	var a,i,j;
+		
+	row[0]= [1,1,1,1,1,1,1,0,0,0,1,0,0,1,1,1,0,0,1,1,1,1,1,1,1];
+	row[1]= [1,0,0,0,0,0,1,0,1,0,0,1,1,1,0,1,0,0,1,0,0,0,0,0,1];
+	row[2]= [1,0,1,1,1,0,1,0,1,1,1,0,0,0,1,1,1,0,1,0,1,1,1,0,1];
+	row[3]= [1,0,1,1,1,0,1,0,1,1,1,1,0,1,1,1,0,0,1,0,1,1,1,0,1];
+	row[4]= [1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,0,0,1,0,1,1,1,0,1];
+	row[5]= [1,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,1,0,1,0,0,0,0,0,1];
+	row[6]= [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1];
+	row[7]= [0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0];
+	row[8]= [0,0,1,0,0,1,1,1,1,1,1,0,1,0,1,1,1,1,0,1,1,1,1,1,0];
+	row[9]= [0,0,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,1,1,1,0,1,1,0,0];
+	row[10]=[1,1,1,0,1,0,1,0,0,1,1,1,1,1,1,0,1,0,1,0,0,1,1,0,1];
+	row[11]=[0,1,0,0,1,1,0,0,1,1,0,1,0,0,1,0,1,1,0,1,1,1,0,0,0];
+	row[12]=[1,1,1,1,1,0,1,1,1,0,0,0,1,1,0,0,1,1,1,1,0,1,0,1,1];
+	row[13]=[0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,1,0,1,1,0,1];
+	row[14]=[1,1,1,0,0,0,1,0,1,1,0,0,1,0,0,0,1,0,0,0,1,0,0,1,1];
+	row[15]=[0,0,1,0,0,1,0,0,0,1,1,0,1,0,0,1,1,0,1,0,1,1,0,1,0];
+	row[16]=[1,1,0,0,0,0,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,0,0,1,0];
+	row[17]=[0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,0,0,1,1,0,0,0];
+	row[18]=[1,1,1,1,1,1,1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1,0,0,1];
+	row[19]=[1,0,0,0,0,0,1,0,1,0,0,1,1,1,0,0,1,0,0,0,1,1,0,1,1];
+	row[20]=[1,0,1,1,1,0,1,0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,1,0];
+	row[21]=[1,0,1,1,1,0,1,0,0,0,1,1,1,0,0,1,0,0,0,1,0,1,0,0,0];
+	row[22]=[1,0,1,1,1,0,1,0,1,0,1,0,0,0,0,1,1,1,1,0,1,0,1,1,1];
+	row[23]=[1,0,0,0,0,0,1,0,0,1,1,1,0,1,1,0,0,1,1,0,0,0,0,0,0];
+	row[24]=[1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,1,1,0,0,1];
+	
+	var DrawCode=function(){
+		for (i=0;i<25;i++){
+			for (j=0;j<25;j++){
+				a=row[i][j].toString();
+				if (a=="1"){
+					ctx.fillStyle="#000000";			
+				}
+				if (a=="0"){
+					ctx.fillStyle="#ffffff";
+				}
+				ctx.fillRect(i*20,j*20,20,20);
+			}
+		}
+	}
+	DrawCode();
+</script>
+<script language="javascript">
+    (function(window, document, undefined) {
+        var hearts = [];
+    
+        window.requestAnimationFrame = (function() {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function(callback) {
+                    setTimeout(callback, 1000 / 60);
+                }
+        })();
+    
+        init();
+    
+        function init() {
+            css(".heart{z-index:100000000;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}"); // 定义要生成的爱心的样式
+            attachEvent(); 
+            gameloop(); 
+        }
+    
+        function gameloop() {
+            for(var i = 0; i < hearts.length; i++) { 
+                if(hearts[i].alpha <= 0) {
+                    document.body.removeChild(hearts[i].el);
+                    hearts.splice(i, 1);
+                    continue;
+                }
+                hearts[i].y--;
+                hearts[i].scale += 0.004;
+                hearts[i].alpha -= 0.013;
+                hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+            }
+            requestAnimationFrame(gameloop); 
+        }
+    
+        function attachEvent() {
+            var old = typeof window.onclick === "function" && window.onclick;
+            window.onclick = function(event) {
+                old && old();
+                createHeart(event);
+            }
+        }
+    
+        function createHeart(event) {
+            var d = document.createElement("div");
+            d.className = "heart";
+            hearts.push({
+                el: d,
+                x: event.clientX - 5,
+                y: event.clientY - 5,
+                scale: 1,
+                alpha: 1, 
+                color: randomColor()
+            });
+            document.body.appendChild(d);
+        }
+    
+        function css(css) {
+            var style = document.createElement("style");
+            style.type = "text/css";
+            try {
+                style.appendChild(document.createTextNode(css));
+            } catch(ex) {
+                style.styleSheet.cssText = css;
+            }
+            document.getElementsByTagName('head')[0].appendChild(style);
+        }
+    
+        function randomColor() {
+            return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+        }
+    })(window,document);
+</script>
+</body>
+</html>
+    
+
